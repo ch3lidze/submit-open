@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>open and submit</title>
+</head>
+<body>
+    <section class="popup-intro">
+        <h1 style="color: rgb(0, 255, 98);">Leave us a message</h1>
+        <button class="popup-open">Open</button>
+        <div class="popup-wrapper">
+          <div class="popup">
+            <button class="close-btn"></button>
+            <form class="popup-form">
+
+              <h2 class="popup-form__title">Contact</h2>
+          <input type="text" class="popup-form__input" placeholder="Name">
+           <input type="tel" class="popup-form__input" placeholder="Phone">
+              <button type="submit" class="popup-form__submit">Send</button>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+      <script>
+          let popup = document.querySelector(".popup-wrapper");
+    let popupForm = document.querySelector(".popup-form");
+    let popupBtn = document.querySelector(".popup-open");
+        let popupClose = document.querySelector(".close-btn");
+
+popupBtn.addEventListener("click", (e) => {
+  e.preventDefault;
+  showPopup();
+});
+
+popupClose.addEventListener("click", (e) => {
+  e.preventDefault;
+  removePopup();
+});
+
+popupForm.addEventListener("submit", () => {
+  removePopup();
+});
+
+popup.addEventListener("click", (e) => {
+  let target = e.target;
+  if (target.classList.contains("popup-wrapper")) {
+    removePopup();
+  } else return;
+});
+
+function showPopup() {
+  popup.classList.add("active");
+  bodyScroll();
+}
+
+function removePopup() {
+  popup.classList.remove("active");
+  bodyScroll();
+}
+
+function bodyScroll() {
+  document.body.classList.toggle("no-scroll");
+}
+
+      </script>
+</body>
+</html>
